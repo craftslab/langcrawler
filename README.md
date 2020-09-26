@@ -13,6 +13,7 @@
 
 ## Requirement
 
+- PostgreSQL >= 12.4
 - Python >= 3.8
 - Redis >= 6.0
 
@@ -50,8 +51,10 @@ pip install langcrawler --upgrade
 ```bash
 langcrawler \
     --lang-type go,javascript,php,python,rust,typescript \
+    --pg-address 127.0.0.1:5432 \
+    --pg-login postgres/postgres \
     --redis-address 127.0.0.1:6379 \
-    --redis-login redis/redis \
+    --redis-pass redis \
     --repo-count 10 \
     --repo-host bitbucket,github,gitlab
 ```
@@ -61,23 +64,28 @@ langcrawler \
 ## Usage
 
 ```bash
-usage: crawler.py [-h] [-t LANG_TYPE] [-a REDIS_ADDRESS] [-l REDIS_LOGIN]
-                  [-c REPO_COUNT] [-r REPO_HOST] [-v]
+usage: langcrawler [-h] [--lang-type LANG_TYPE] [--pg-address PG_ADDRESS]
+                   [--pg-login PG_LOGIN] [--redis-address REDIS_ADDRESS]
+                   [--redis-pass REDIS_PASS] [--repo-count REPO_COUNT]
+                   [--repo-host REPO_HOST] [-v]
 
 Language Crawler
 
 optional arguments:
   -h, --help            show this help message and exit
-  -t LANG_TYPE, --lang-type LANG_TYPE
+  --lang-type LANG_TYPE
                         language type, default:
                         go,javascript,php,python,rust,typescript
-  -a REDIS_ADDRESS, --redis-address REDIS_ADDRESS
+  --pg-address PG_ADDRESS
+                        postgres address (host:port), default: 127.0.0.1:5432
+  --pg-login PG_LOGIN   postgres login (name/pass), default: postgres/postgres
+  --redis-address REDIS_ADDRESS
                         redis address (host:port), default: 127.0.0.1:6379
-  -l REDIS_LOGIN, --redis-login REDIS_LOGIN
-                        redis login (name/pass), default: redis/redis
-  -c REPO_COUNT, --repo-count REPO_COUNT
+  --redis-pass REDIS_PASS
+                        redis pass, default: redis
+  --repo-count REPO_COUNT
                         repository count, default: 10
-  -r REPO_HOST, --repo-host REPO_HOST
+  --repo-host REPO_HOST
                         repository host, default: bitbucket,github,gitlab
   -v, --version         show program's version number and exit
 ```

@@ -1,6 +1,7 @@
 colorama
 coverage
 coveralls
+psycopg2
 pytest
 redis
 requests
