@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from langcrawler.cmd.config import Config, ConfigException
+from langcrawler.config.config import Config, ConfigException
 
 
 def test_config():
@@ -91,7 +91,7 @@ def test_config():
         assert False
 
     try:
-        config.repo(1, 'bitbucket,github')
+        config.repo(1, 'bitbucket,gerrit')
     except ConfigException as _:
         assert False
     else:

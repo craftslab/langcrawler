@@ -4,7 +4,7 @@ import sys
 
 from .cmd.argument import Argument
 from .cmd.banner import BANNER
-from .cmd.config import Config, ConfigException
+from .config.config import Config, ConfigException
 from .logger.logger import Logger
 from .scheduler.scheduler import Scheduler, SchedulerException
 

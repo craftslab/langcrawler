@@ -10,7 +10,7 @@ class ConfigException(Exception):
 
 
 class Config(object):
-    hosts = ['bitbucket', 'github', 'gitlab']
+    hosts = ['bitbucket', 'gerrit', 'github', 'gitlab']
     langs = ['go', 'javascript', 'php', 'python', 'rust', 'typescript']
 
     def __init__(self):
@@ -25,7 +25,7 @@ class Config(object):
         self.redis_port = '6379'
         self.redis_pass = 'redis'
 
-        self.repo_count = 10
+        self.repo_count = 1
         self.repo_host = []
 
     def lang(self, _type):
@@ -79,6 +79,8 @@ class Config(object):
 
         if len(host.strip()) == 0:
             raise ConfigException('host invalid: %s' % host)
+
+        self.repo_count = count
 
         buf = host.split(',')
         for item in buf:
