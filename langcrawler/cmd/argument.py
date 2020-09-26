@@ -12,32 +12,40 @@ class Argument(object):
 
     def _add(self):
         self._parser.add_argument('--lang-type',
+                                  default='go,javascript,php,python,rust,typescript',
                                   dest='lang_type',
-                                  help='language type, default: go,javascript,php,python,rust,typescript',
+                                  help='language type',
                                   required=False)
         self._parser.add_argument('--pg-address',
+                                  default='127.0.0.1:5432',
                                   dest='pg_address',
-                                  help='postgres address (host:port), default: 127.0.0.1:5432',
+                                  help='postgres address (host:port)',
                                   required=False)
         self._parser.add_argument('--pg-login',
+                                  default='postgres/postgres',
                                   dest='pg_login',
-                                  help='postgres login (name/pass), default: postgres/postgres',
+                                  help='postgres login (user/pass)',
                                   required=False)
         self._parser.add_argument('--redis-address',
+                                  default='127.0.0.1:6379',
                                   dest='redis_address',
-                                  help='redis address (host:port), default: 127.0.0.1:6379',
+                                  help='redis address (host:port)',
                                   required=False)
         self._parser.add_argument('--redis-pass',
+                                  default='redis',
                                   dest='redis_pass',
-                                  help='redis pass, default: redis',
+                                  help='redis pass',
                                   required=False)
         self._parser.add_argument('--repo-count',
+                                  default=10,
                                   dest='repo_count',
-                                  help='repository count, default: 10',
-                                  required=False)
+                                  help='repository count',
+                                  required=False,
+                                  type=int)
         self._parser.add_argument('--repo-host',
+                                  default='bitbucket,github,gitlab',
                                   dest='repo_host',
-                                  help='repository host, default: bitbucket,github,gitlab',
+                                  help='repository host',
                                   required=False)
         self._parser.add_argument('-v', '--version',
                                   action='version',

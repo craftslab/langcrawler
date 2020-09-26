@@ -74,19 +74,18 @@ Language Crawler
 optional arguments:
   -h, --help            show this help message and exit
   --lang-type LANG_TYPE
-                        language type, default:
-                        go,javascript,php,python,rust,typescript
+                        language type
   --pg-address PG_ADDRESS
-                        postgres address (host:port), default: 127.0.0.1:5432
-  --pg-login PG_LOGIN   postgres login (name/pass), default: postgres/postgres
+                        postgres address (host:port)
+  --pg-login PG_LOGIN   postgres login (user/pass)
   --redis-address REDIS_ADDRESS
-                        redis address (host:port), default: 127.0.0.1:6379
+                        redis address (host:port)
   --redis-pass REDIS_PASS
-                        redis pass, default: redis
+                        redis pass
   --repo-count REPO_COUNT
-                        repository count, default: 10
+                        repository count
   --repo-host REPO_HOST
-                        repository host, default: bitbucket,github,gitlab
+                        repository host
   -v, --version         show program's version number and exit
 ```
 
