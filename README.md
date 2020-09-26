@@ -13,8 +13,8 @@
 
 ## Requirement
 
-- PostgreSQL >= 12.4
 - Python >= 3.8
+- Redis >= 6.0
 
 
 
@@ -50,10 +50,36 @@ pip install langcrawler --upgrade
 ```bash
 langcrawler \
     --lang-type go,javascript,php,python,rust,typescript \
-    --pg-address localhost:5432 \
-    --pg-login postgres/postgres \
-    --repo-count 2 \
+    --redis-address 127.0.0.1:6379 \
+    --redis-login redis/redis \
+    --repo-count 10 \
     --repo-host bitbucket,github,gitlab
+```
+
+
+
+## Usage
+
+```bash
+usage: crawler.py [-h] [-t LANG_TYPE] [-a REDIS_ADDRESS] [-l REDIS_LOGIN]
+                  [-c REPO_COUNT] [-r REPO_HOST] [-v]
+
+Language Crawler
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -t LANG_TYPE, --lang-type LANG_TYPE
+                        language type, default:
+                        go,javascript,php,python,rust,typescript
+  -a REDIS_ADDRESS, --redis-address REDIS_ADDRESS
+                        redis address (host:port), default: 127.0.0.1:6379
+  -l REDIS_LOGIN, --redis-login REDIS_LOGIN
+                        redis login (name/pass), default: redis/redis
+  -c REPO_COUNT, --repo-count REPO_COUNT
+                        repository count, default: 10
+  -r REPO_HOST, --repo-host REPO_HOST
+                        repository host, default: bitbucket,github,gitlab
+  -v, --version         show program's version number and exit
 ```
 
 
