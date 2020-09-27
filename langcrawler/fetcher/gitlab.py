@@ -23,35 +23,7 @@ class GitLab(object):
             raise GitLabException('init failed %s' % str(e))
 
     def run(self, langs, count):
+        # TODO
         result = []
 
-        for lang in langs:
-            try:
-                buf = self._request.run(self._url % (lang, count))
-            except RequestException as e:
-                raise GitLabException('run failed %s' % str(e))
-            for item in buf:
-                result.append(self._schema(item))
-
         return result
-
-    def _schema(self, data):
-        schema = Schema()
-        schema.clone = ''
-        buf = self._commit(data)
-        schema.commit = ''
-        schema.date = ''
-        schema.host = 'https://gitlab.com'
-        schema.language = ''
-        schema.repo = ''
-        schema.url = ''
-
-        return schema
-
-    def _commit(self, url):
-        try:
-            buf = self._request.run(url)
-        except RequestException as e:
-            raise GitLabException('commit failed %s' % str(e))
-
-        return buf
