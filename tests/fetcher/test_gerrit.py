@@ -24,8 +24,7 @@ def test_gerrit():
     }
 
     try:
-        buf = gerrit._schema('plugins/code-owners', data)
-        buf.dump()
+        _ = gerrit._build('plugins/code-owners', data)
     except GerritException as _:
         assert False
     else:

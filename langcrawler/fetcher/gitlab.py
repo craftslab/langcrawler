@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from ..request.request import Request, RequestException
-from ..schema.schema import Schema
 
 
 class GitLabException(Exception):

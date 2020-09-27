@@ -28,24 +28,24 @@ class Gerrit(object):
         try:
             buf = self._request.run(self._url+'?n=%d' % count)
             for key, val in buf.items():
-                result.append(self._schema(key, val))
+                result.append(self._build(key, val))
         except RequestException as e:
             raise GerritException('run failed %s' % str(e))
 
         return result
 
-    def _schema(self, repo, data):
-        schema = Schema()
-        schema.clone = data['web_links'][0]['url']
-        revision, date = self._commit(data['id'])
-        schema.commit = revision
-        schema.date = date
-        schema.host = 'https://gerrit-review.googlesource.com'
-        schema.language = ''
-        schema.repo = repo
-        schema.url = data['web_links'][0]['url']
+    def _build(self, repo, data):
+        rev, date = self._commit(data['id'])
 
-        return schema
+        return {
+            Schema.CLONE: data['web_links'][0]['url'],
+            Schema.COMMIT: rev,
+            Schema.DATE: date,
+            Schema.HOST: 'https://gerrit-review.googlesource.com',
+            Schema.LANGUAGE: '',
+            Schema.REPO: repo,
+            Schema.URL: data['web_links'][0]['url']
+        }
 
     def _commit(self, repo):
         try:

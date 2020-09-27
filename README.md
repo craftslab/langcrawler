@@ -50,13 +50,13 @@ pip install langcrawler --upgrade
 
 ```bash
 langcrawler \
-    --lang-type go,javascript,php,python,rust,typescript \
-    --pg-address 127.0.0.1:5432 \
-    --pg-login postgres/postgres \
-    --redis-address 127.0.0.1:6379 \
-    --redis-pass redis \
-    --repo-count 10 \
-    --repo-host gerrit,github,gitlab
+  --lang-type go,javascript,php,python,rust,typescript \
+  --pg-address 127.0.0.1:5432 \
+  --pg-login postgres/postgres \
+  --redis-address 127.0.0.1:6379 \
+  --redis-pass redis \
+  --repo-count 10 \
+  --repo-host gerrit,github,gitlab
 ```
 
 

@@ -31,22 +31,22 @@ class GitHub(object):
             except RequestException as e:
                 raise GitHubException('run failed %s' % str(e))
             for item in buf['items']:
-                result.append(self._schema(item))
+                result.append(self._build(item))
 
         return result
 
-    def _schema(self, data):
-        schema = Schema()
-        schema.clone = data['clone_url']
+    def _build(self, data):
         buf = self._commit(data['commits_url'].replace('{/sha}', ''))
-        schema.commit = buf['sha']
-        schema.date = buf['commit']['committer']['date']
-        schema.host = 'https://github.com'
-        schema.language = data['language']
-        schema.repo = data['full_name']
-        schema.url = data['html_url']
 
-        return schema
+        return {
+            Schema.CLONE: data['clone_url'],
+            Schema.COMMIT: buf['sha'],
+            Schema.DATE: buf['commit']['committer']['date'],
+            Schema.HOST: 'https://github.com',
+            Schema.LANGUAGE: data['language'],
+            Schema.REPO: data['full_name'],
+            Schema.URL: data['html_url']
+        }
 
     def _commit(self, url):
         try:
