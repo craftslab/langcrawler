@@ -18,3 +18,12 @@ class Schema(object):
         self.language = ''
         self.repo = ''
         self.url = ''
+
+    def dump(self):
+        print('clone: %s' % self.clone)
+        print('commit: %s' % self.commit)
+        print('date: %s' % self.date)
+        print('host: %s' % self.host)
+        print('language: %s' % self.language)
+        print('repo: %s' % self.repo)
+        print('url: %s' % self.url)

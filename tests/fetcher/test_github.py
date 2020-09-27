@@ -28,7 +28,8 @@ def test_github():
     data = data['items'][0]
 
     try:
-        _ = github._schema(data)
+        buf = github._schema(data)
+        buf.dump()
     except GitHubException as _:
         assert False
     else:
