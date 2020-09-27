@@ -28,9 +28,9 @@ class Fetcher(object):
         self._config = config
 
     def run(self):
-        for item in self._config.repo_host:
+        for item in self._config.repo_hosts:
             try:
                 provider = self._providers[item]()
-                provider.run(self._config.lang_type, self._config.repo_count)
+                provider.run(self._config.repo_langs, self._config.repo_count)
             except Exception as e:
                 raise FetcherException('run failed %s' % str(e))

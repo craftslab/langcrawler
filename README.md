@@ -50,13 +50,13 @@ pip install langcrawler --upgrade
 
 ```bash
 langcrawler \
-  --lang-type go,javascript,php,python,rust,typescript \
   --pg-address 127.0.0.1:5432 \
   --pg-login postgres/postgres \
   --redis-address 127.0.0.1:6379 \
   --redis-pass redis \
   --repo-count 10 \
-  --repo-host gerrit,github,gitlab
+  --repo-hosts gerrit,github,gitlab \
+  --repo-langs go,javascript,php,python,rust,typescript
 ```
 
 
@@ -64,17 +64,15 @@ langcrawler \
 ## Usage
 
 ```bash
-usage: langcrawler [-h] [--lang-type LANG_TYPE] [--pg-address PG_ADDRESS]
-                   [--pg-login PG_LOGIN] [--redis-address REDIS_ADDRESS]
-                   [--redis-pass REDIS_PASS] [--repo-count REPO_COUNT]
-                   [--repo-host REPO_HOST] [-v]
+usage: crawler.py [-h] [--pg-address PG_ADDRESS] [--pg-login PG_LOGIN]
+                  [--redis-address REDIS_ADDRESS] [--redis-pass REDIS_PASS]
+                  [--repo-count REPO_COUNT] [--repo-hosts REPO_HOSTS]
+                  [--repo-langs REPO_LANGS] [-v]
 
 Language Crawler
 
 optional arguments:
   -h, --help            show this help message and exit
-  --lang-type LANG_TYPE
-                        language type
   --pg-address PG_ADDRESS
                         postgres address (host:port)
   --pg-login PG_LOGIN   postgres login (user/pass)
@@ -84,8 +82,10 @@ optional arguments:
                         redis pass
   --repo-count REPO_COUNT
                         repository count
-  --repo-host REPO_HOST
-                        repository host
+  --repo-hosts REPO_HOSTS
+                        repository hosts
+  --repo-langs REPO_LANGS
+                        repository languages
   -v, --version         show program's version number and exit
 ```
 

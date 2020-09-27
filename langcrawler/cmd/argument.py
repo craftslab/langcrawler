@@ -11,11 +11,6 @@ class Argument(object):
         self._add()
 
     def _add(self):
-        self._parser.add_argument('--lang-type',
-                                  default='go,javascript,php,python,rust,typescript',
-                                  dest='lang_type',
-                                  help='language type',
-                                  required=False)
         self._parser.add_argument('--pg-address',
                                   default='127.0.0.1:5432',
                                   dest='pg_address',
@@ -42,10 +37,15 @@ class Argument(object):
                                   help='repository count',
                                   required=False,
                                   type=int)
-        self._parser.add_argument('--repo-host',
+        self._parser.add_argument('--repo-hosts',
                                   default='gerrit,github,gitlab',
-                                  dest='repo_host',
-                                  help='repository host',
+                                  dest='repo_hosts',
+                                  help='repository hosts',
+                                  required=False)
+        self._parser.add_argument('--repo-langs',
+                                  default='go,javascript,php,python,rust,typescript',
+                                  dest='repo_langs',
+                                  help='repository languages',
                                   required=False)
         self._parser.add_argument('-v', '--version',
                                   action='version',

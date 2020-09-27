@@ -14,76 +14,121 @@ class Config(object):
     langs = ['go', 'javascript', 'php', 'python', 'rust', 'typescript']
 
     def __init__(self):
-        self.lang_type = []
+        self._pg_host = '127.0.0.1'
+        self._pg_port = 5432
+        self._pg_user = 'postgres'
+        self._pg_pass = 'postgres'
 
-        self.pg_host = '127.0.0.1'
-        self.pg_port = '5432'
-        self.pg_user = 'postgres'
-        self.pg_pass = 'postgres'
+        self._redis_host = '127.0.0.1'
+        self._redis_port = 6379
+        self._redis_pass = 'redis'
 
-        self.redis_host = '127.0.0.1'
-        self.redis_port = '6379'
-        self.redis_pass = 'redis'
+        self._repo_count = 1
+        self._repo_hosts = []
+        self._repo_langs = []
 
-        self.repo_count = 1
-        self.repo_host = []
+    @property
+    def pg_host(self):
+        return self._pg_host
 
-    def lang(self, _type):
-        if len(_type.strip()) == 0:
-            raise ConfigException('type invalid: %s' % _type)
+    @pg_host.setter
+    def pg_host(self, host):
+        if not isinstance(host, str) or len(host.strip()) == 0:
+            raise ConfigException('host invalid')
+        self._pg_host = host
 
-        buf = _type.split(',')
-        for item in buf:
-            if item.strip() not in self.langs:
-                raise ConfigException('type invalid: %s' % item)
-            self.lang_type.append(item.strip())
+    @property
+    def pg_port(self):
+        return self._pg_port
 
-    def postgres(self, address, login):
-        if len(address.strip()) == 0:
-            raise ConfigException('address invalid: %s' % address)
+    @pg_port.setter
+    def pg_port(self, port):
+        if not isinstance(port, int) or port <= 0:
+            raise ConfigException('port invalid')
+        self._pg_port = port
 
-        if len(login.strip()) == 0:
-            raise ConfigException('login invalid: %s' % login)
+    @property
+    def pg_user(self):
+        return self._pg_user
 
-        host, port = address.split(':')
-        if len(host.strip()) != 0:
-            self.pg_host = host
-        if len(port.strip()) != 0:
-            self.pg_port = port
+    @pg_user.setter
+    def pg_user(self, user):
+        if not isinstance(user, str) or len(user.strip()) == 0:
+            raise ConfigException('user invalid')
+        self._pg_user = user
 
-        user, _pass = login.split('/')
-        if len(user.strip()) != 0:
-            self.pg_user = user
-        if len(_pass.strip()) != 0:
-            self.pg_pass = _pass
+    @property
+    def pg_pass(self):
+        return self._pg_pass
 
-    def redis(self, address, _pass):
-        if len(address.strip()) == 0:
-            raise ConfigException('address invalid: %s' % address)
+    @pg_pass.setter
+    def pg_pass(self, _pass):
+        if not isinstance(_pass, str) or len(_pass.strip()) == 0:
+            raise ConfigException('pass invalid')
+        self._pg_pass = _pass
 
-        if len(_pass.strip()) == 0:
-            raise ConfigException('pass invalid: %s' % _pass)
+    @property
+    def redis_host(self):
+        return self._redis_host
 
-        host, port = address.split(':')
-        if len(host.strip()) != 0:
-            self.redis_host = host
-        if len(port.strip()) != 0:
-            self.redis_port = port
+    @redis_host.setter
+    def redis_host(self, host):
+        if not isinstance(host, str) or len(host.strip()) == 0:
+            raise ConfigException('host invalid')
+        self._redis_host = host
 
-        if len(_pass.strip()) != 0:
-            self.redis_pass = _pass
+    @property
+    def redis_port(self):
+        return self._redis_port
 
-    def repo(self, count, host):
-        if count <= 0:
-            raise ConfigException('count invalid: %d' % count)
+    @redis_port.setter
+    def redis_port(self, port):
+        if not isinstance(port, int) or port <= 0:
+            raise ConfigException('port invalid')
+        self._redis_port = port
 
-        if len(host.strip()) == 0:
-            raise ConfigException('host invalid: %s' % host)
+    @property
+    def redis_pass(self):
+        return self._redis_pass
 
-        self.repo_count = count
+    @redis_pass.setter
+    def redis_pass(self, _pass):
+        if not isinstance(_pass, str) or len(_pass.strip()) == 0:
+            raise ConfigException('pass invalid')
+        self._redis_pass = _pass
 
-        buf = host.split(',')
-        for item in buf:
+    @property
+    def repo_count(self):
+        return self._repo_count
+
+    @repo_count.setter
+    def repo_count(self, count):
+        if not isinstance(count, int) or count <= 0:
+            raise ConfigException('count invalid')
+        self._repo_count = count
+
+    @property
+    def repo_hosts(self):
+        return self._repo_hosts
+
+    @repo_hosts.setter
+    def repo_hosts(self, hosts):
+        if not isinstance(hosts, list) or len(hosts) == 0:
+            raise ConfigException('hosts invalid')
+        for item in hosts:
             if item.strip() not in self.hosts:
                 raise ConfigException('host invalid: %s' % item)
-            self.repo_host.append(item.strip())
+            self._repo_hosts.append(item)
+
+    @property
+    def repo_langs(self):
+        return self._repo_langs
+
+    @repo_langs.setter
+    def repo_langs(self, langs):
+        if not isinstance(langs, list) or len(langs) == 0:
+            raise ConfigException('langs invalid')
+        for item in langs:
+            if item.strip() not in self.langs:
+                raise ConfigException('lang invalid: %s' % item)
+            self._repo_langs.append(item)

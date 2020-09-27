@@ -20,7 +20,7 @@ class Request(object):
         if retry < 0:
             raise RequestException('retry invalid: %d' % retry)
 
-        if type(timeout) is int and timeout < 0:
+        if isinstance(timeout, int) and timeout < 0:
             raise RequestException('timeout invalid: %d' % timeout)
 
         self._retry = retry

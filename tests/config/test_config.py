@@ -7,91 +7,140 @@ def test_config():
     config = Config()
 
     try:
-        config.lang(' ')
+        config.pg_host = ''
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-       config.lang('foo,go')
-    except ConfigException as _:
-       assert True
-    else:
-       assert False
-
-    try:
-        config.lang('go,rust')
+        config.pg_host = '127.0.0.1'
     except ConfigException as _:
         assert False
     else:
         assert True
 
     try:
-       config.postgres(' ', 'postgres/postgres')
+        config.pg_port = 0
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.postgres('127.0.0.1:5432', ' ')
-    except ConfigException as _:
-        assert True
-    else:
-        assert False
-
-    try:
-        config.postgres('127.0.0.1:5432', 'postgres/postgres')
+        config.pg_port = 5432
     except ConfigException as _:
         assert False
     else:
         assert True
 
     try:
-        config.redis(' ', 'redis')
+        config.pg_user = ''
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.redis('127.0.0.1:6379', ' ')
-    except ConfigException as _:
-        assert True
-    else:
-        assert False
-
-    try:
-        config.redis('127.0.0.1:6379', 'redis')
+        config.pg_user = 'postgres'
     except ConfigException as _:
         assert False
     else:
         assert True
 
     try:
-        config.repo(0, 'gerrit')
+        config.pg_pass = ''
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.repo(1, ' ')
+        config.pg_pass = 'postgres'
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
+        config.redis_host = ''
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.repo(1, 'gerrit,foo')
+        config.redis_host = '127.0.0.1'
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
+        config.redis_port = 0
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.repo(1, 'gerrit,github')
+        config.redis_port = 6379
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
+        config.redis_pass = ''
+    except ConfigException as _:
+        assert True
+    else:
+        assert False
+
+    try:
+        config.redis_pass = 'redis'
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
+        config.repo_count = 0
+    except ConfigException as _:
+        assert True
+    else:
+        assert False
+
+    try:
+        config.repo_count = 1
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
+        config.repo_hosts = []
+    except ConfigException as _:
+        assert True
+    else:
+        assert False
+
+    try:
+        config.repo_hosts = ['gerrit']
+    except ConfigException as _:
+        assert False
+    else:
+        assert True
+
+    try:
+        config.repo_langs = []
+    except ConfigException as _:
+        assert True
+    else:
+        assert False
+
+    try:
+        config.repo_langs = ['go']
     except ConfigException as _:
         assert False
     else:
