@@ -2,6 +2,7 @@
 
 from langcrawler.fetcher.gerrit import Gerrit
 from langcrawler.fetcher.github import GitHub
+from langcrawler.fetcher.gitlab import GitLab
 
 
 class FetcherException(Exception):
@@ -16,7 +17,8 @@ class FetcherException(Exception):
 class Fetcher(object):
     _providers = {
         'gerrit': Gerrit,
-        'github': GitHub
+        'github': GitHub,
+        'gitlab': GitLab
     }
 
     def __init__(self, config=None):

@@ -56,7 +56,7 @@ langcrawler \
     --redis-address 127.0.0.1:6379 \
     --redis-pass redis \
     --repo-count 10 \
-    --repo-host bitbucket,gerrit,github,gitlab
+    --repo-host gerrit,github,gitlab
 ```
 
 
@@ -99,6 +99,6 @@ Project License can be found [here](https://github.com/craftslab/langcrawler/blo
 
 ## Reference
 
-- [Search on Bitbucket](https://developer.atlassian.com/server/bitbucket/reference/rest-api/)
+- [Search on Gerrit](https://gerrit-documentation.storage.googleapis.com/Documentation/3.2.3/rest-api.html)
 - [Search on GitHub](https://developer.github.com/v3/search/)
 - [Search on GitLab](https://docs.gitlab.com/ee/api/api_resources.html)

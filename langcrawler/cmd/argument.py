@@ -43,7 +43,7 @@ class Argument(object):
                                   required=False,
                                   type=int)
         self._parser.add_argument('--repo-host',
-                                  default='bitbucket,gerrit,github,gitlab',
+                                  default='gerrit,github,gitlab',
                                   dest='repo_host',
                                   help='repository host',
                                   required=False)

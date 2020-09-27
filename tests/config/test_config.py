@@ -70,7 +70,7 @@ def test_config():
         assert True
 
     try:
-        config.repo(0, 'bitbucket')
+        config.repo(0, 'gerrit')
     except ConfigException as _:
         assert True
     else:
@@ -84,14 +84,14 @@ def test_config():
         assert False
 
     try:
-        config.repo(1, 'bitbucket,foo')
+        config.repo(1, 'gerrit,foo')
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.repo(1, 'bitbucket,gerrit')
+        config.repo(1, 'gerrit,github')
     except ConfigException as _:
         assert False
     else:

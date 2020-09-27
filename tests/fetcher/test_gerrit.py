@@ -1,8 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import json
-import os
-
 from langcrawler.fetcher.gerrit import Gerrit, GerritException
 
 

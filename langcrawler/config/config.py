@@ -10,7 +10,7 @@ class ConfigException(Exception):
 
 
 class Config(object):
-    hosts = ['bitbucket', 'gerrit', 'github', 'gitlab']
+    hosts = ['gerrit', 'github', 'gitlab']
     langs = ['go', 'javascript', 'php', 'python', 'rust', 'typescript']
 
     def __init__(self):
