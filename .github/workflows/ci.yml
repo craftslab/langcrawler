@@ -39,7 +39,7 @@ jobs:
       run: black --check --line-length=88 langcrawler
     - name: Run flake8
       run: flake8 --ignore=E501,F841,W605 --max-line-length=88 langcrawler
-    - name: Run mypy
-      run: mypy langcrawler
-    - name: tests
+    #- name: Run mypy
+    #  run: mypy langcrawler
+    - name: Run pytest
       run: pytest
