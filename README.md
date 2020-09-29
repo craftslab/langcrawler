@@ -54,7 +54,7 @@ langcrawler \
   --pg-login postgres/postgres \
   --redis-address 127.0.0.1:6379 \
   --redis-pass redis \
-  --repo-count 10 \
+  --repo-count 1 \
   --repo-hosts gerrit,github,gitlab \
   --repo-langs go,javascript,php,python,rust,typescript
 ```
