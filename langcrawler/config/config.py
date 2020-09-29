@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class ConfigException(Exception):
     def __init__(self, info):
         super().__init__(self)
@@ -10,18 +11,18 @@ class ConfigException(Exception):
 
 
 class Config(object):
-    hosts = ['gerrit', 'github', 'gitlab']
-    langs = ['go', 'javascript', 'php', 'python', 'rust', 'typescript']
+    hosts = ["gerrit", "github", "gitlab"]
+    langs = ["go", "javascript", "php", "python", "rust", "typescript"]
 
     def __init__(self):
-        self._pg_host = '127.0.0.1'
+        self._pg_host = "127.0.0.1"
         self._pg_port = 5432
-        self._pg_user = 'postgres'
-        self._pg_pass = 'postgres'
+        self._pg_user = "postgres"
+        self._pg_pass = "postgres"
 
-        self._redis_host = '127.0.0.1'
+        self._redis_host = "127.0.0.1"
         self._redis_port = 6379
-        self._redis_pass = 'redis'
+        self._redis_pass = "redis"
 
         self._repo_count = 1
         self._repo_hosts = []
@@ -34,7 +35,7 @@ class Config(object):
     @pg_host.setter
     def pg_host(self, host):
         if not isinstance(host, str) or len(host.strip()) == 0:
-            raise ConfigException('host invalid')
+            raise ConfigException("host invalid")
         self._pg_host = host
 
     @property
@@ -44,7 +45,7 @@ class Config(object):
     @pg_port.setter
     def pg_port(self, port):
         if not isinstance(port, int) or port <= 0:
-            raise ConfigException('port invalid')
+            raise ConfigException("port invalid")
         self._pg_port = port
 
     @property
@@ -54,7 +55,7 @@ class Config(object):
     @pg_user.setter
     def pg_user(self, user):
         if not isinstance(user, str) or len(user.strip()) == 0:
-            raise ConfigException('user invalid')
+            raise ConfigException("user invalid")
         self._pg_user = user
 
     @property
@@ -64,7 +65,7 @@ class Config(object):
     @pg_pass.setter
     def pg_pass(self, _pass):
         if not isinstance(_pass, str) or len(_pass.strip()) == 0:
-            raise ConfigException('pass invalid')
+            raise ConfigException("pass invalid")
         self._pg_pass = _pass
 
     @property
@@ -74,7 +75,7 @@ class Config(object):
     @redis_host.setter
     def redis_host(self, host):
         if not isinstance(host, str) or len(host.strip()) == 0:
-            raise ConfigException('host invalid')
+            raise ConfigException("host invalid")
         self._redis_host = host
 
     @property
@@ -84,7 +85,7 @@ class Config(object):
     @redis_port.setter
     def redis_port(self, port):
         if not isinstance(port, int) or port <= 0:
-            raise ConfigException('port invalid')
+            raise ConfigException("port invalid")
         self._redis_port = port
 
     @property
@@ -94,7 +95,7 @@ class Config(object):
     @redis_pass.setter
     def redis_pass(self, _pass):
         if not isinstance(_pass, str) or len(_pass.strip()) == 0:
-            raise ConfigException('pass invalid')
+            raise ConfigException("pass invalid")
         self._redis_pass = _pass
 
     @property
@@ -104,7 +105,7 @@ class Config(object):
     @repo_count.setter
     def repo_count(self, count):
         if not isinstance(count, int) or count <= 0:
-            raise ConfigException('count invalid')
+            raise ConfigException("count invalid")
         self._repo_count = count
 
     @property
@@ -114,10 +115,10 @@ class Config(object):
     @repo_hosts.setter
     def repo_hosts(self, hosts):
         if not isinstance(hosts, list) or len(hosts) == 0:
-            raise ConfigException('hosts invalid')
+            raise ConfigException("hosts invalid")
         for item in hosts:
             if item.strip() not in self.hosts:
-                raise ConfigException('host invalid: %s' % item)
+                raise ConfigException("host invalid: %s" % item)
             self._repo_hosts.append(item)
 
     @property
@@ -127,8 +128,8 @@ class Config(object):
     @repo_langs.setter
     def repo_langs(self, langs):
         if not isinstance(langs, list) or len(langs) == 0:
-            raise ConfigException('langs invalid')
+            raise ConfigException("langs invalid")
         for item in langs:
             if item.strip() not in self.langs:
-                raise ConfigException('lang invalid: %s' % item)
+                raise ConfigException("lang invalid: %s" % item)
             self._repo_langs.append(item)

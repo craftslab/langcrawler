@@ -15,15 +15,11 @@ class FetcherException(Exception):
 
 
 class Fetcher(object):
-    _providers = {
-        'gerrit': Gerrit,
-        'github': GitHub,
-        'gitlab': GitLab
-    }
+    _providers = {"gerrit": Gerrit, "github": GitHub, "gitlab": GitLab}
 
     def __init__(self, config=None):
         if config is None:
-            raise FetcherException('config invalid')
+            raise FetcherException("config invalid")
 
         self._config = config
 
@@ -33,4 +29,4 @@ class Fetcher(object):
                 provider = self._providers[item]()
                 provider.run(self._config.repo_langs, self._config.repo_count)
             except Exception as e:
-                raise FetcherException('run failed %s' % str(e))
+                raise FetcherException("run failed %s" % str(e))

@@ -18,7 +18,7 @@ def test_request():
     else:
         assert False
 
-    url = 'https://api.github.com/search/repositories?q=archived:false+is:public+language:go+mirror:false+stars:>=1000&sort=stars&order=desc&page=1&per_page=1'
+    url = "https://api.github.com/search/repositories?q=archived:false+is:public+language:go+mirror:false+stars:>=1000&sort=stars&order=desc&page=1&per_page=1"
 
     try:
         request = Request(retry=1, timeout=None)

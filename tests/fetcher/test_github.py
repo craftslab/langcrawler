@@ -7,8 +7,8 @@ from langcrawler.fetcher.github import GitHub, GitHubException
 
 
 def load_data(name):
-    with open(name, 'r') as f:
-        if name.endswith('.json'):
+    with open(name, "r") as f:
+        if name.endswith(".json"):
             data = json.load(f)
         else:
             data = None
@@ -17,15 +17,19 @@ def load_data(name):
 
 
 def test_exception():
-    exception = GitHubException('exception')
-    assert str(exception) == 'exception'
+    exception = GitHubException("exception")
+    assert str(exception) == "exception"
 
 
 def test_github():
     github = GitHub()
 
-    data = load_data(os.path.join(os.path.dirname(os.path.abspath(__file__)), '../data', 'go-github.json'))
-    data = data['items'][0]
+    data = load_data(
+        os.path.join(
+            os.path.dirname(os.path.abspath(__file__)), "../data", "go-github.json"
+        )
+    )
+    data = data["items"][0]
 
     try:
         _ = github._build(data)
@@ -34,7 +38,7 @@ def test_github():
     else:
         assert True
 
-    url = data['commits_url'].replace('{/sha}', '')
+    url = data["commits_url"].replace("{/sha}", "")
 
     try:
         _ = github._commit(url)

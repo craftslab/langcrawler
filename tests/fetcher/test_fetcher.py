@@ -5,8 +5,8 @@ from langcrawler.fetcher.fetcher import Fetcher, FetcherException
 
 
 def test_exception():
-    exception = FetcherException('exception')
-    assert str(exception) == 'exception'
+    exception = FetcherException("exception")
+    assert str(exception) == "exception"
 
 
 def test_fetcher():
@@ -14,8 +14,8 @@ def test_fetcher():
 
     try:
         config.repo_count = 1
-        config.repo_langs = ['go']
-        config.repo_hosts = ['github']
+        config.repo_langs = ["go"]
+        config.repo_hosts = ["github"]
     except ConfigException as _:
         assert False
     else:

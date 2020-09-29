@@ -4,8 +4,8 @@ from langcrawler.fetcher.gerrit import Gerrit, GerritException
 
 
 def test_exception():
-    exception = GerritException('exception')
-    assert str(exception) == 'exception'
+    exception = GerritException("exception")
+    assert str(exception) == "exception"
 
 
 def test_gerrit():
@@ -18,20 +18,20 @@ def test_gerrit():
             {
                 "name": "gitiles",
                 "url": "https://gerrit.googlesource.com/plugins/code-owners",
-                "target": "_blank"
+                "target": "_blank",
             }
-        ]
+        ],
     }
 
     try:
-        _ = gerrit._build('plugins/code-owners', data)
+        _ = gerrit._build("plugins/code-owners", data)
     except GerritException as _:
         assert False
     else:
         assert True
 
     try:
-        _ = gerrit._commit('plugins%2Fcode-owners')
+        _ = gerrit._commit("plugins%2Fcode-owners")
     except GerritException as _:
         assert False
     else:

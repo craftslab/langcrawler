@@ -18,10 +18,10 @@ class RequestException(Exception):
 class Request(object):
     def __init__(self, retry=1, timeout=None):
         if retry < 0:
-            raise RequestException('retry invalid: %d' % retry)
+            raise RequestException("retry invalid: %d" % retry)
 
         if isinstance(timeout, int) and timeout < 0:
-            raise RequestException('timeout invalid: %d' % timeout)
+            raise RequestException("timeout invalid: %d" % timeout)
 
         self._retry = retry
         self._timeout = timeout
@@ -29,11 +29,11 @@ class Request(object):
     def run(self, url):
         session = requests.Session()
         session.keep_alive = False
-        session.mount('https://', HTTPAdapter(max_retries=self._retry))
+        session.mount("https://", HTTPAdapter(max_retries=self._retry))
         response = session.get(url=url, timeout=self._timeout)
         session.close()
 
         if response.status_code != requests.codes.ok:
-            raise RequestException('run failed: %s' % url)
+            raise RequestException("run failed: %s" % url)
 
-        return json.loads(response.text.replace(")]}'", ''))
+        return json.loads(response.text.replace(")]}'", ""))

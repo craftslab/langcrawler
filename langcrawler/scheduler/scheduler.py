@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class SchedulerException(Exception):
     def __init__(self, info):
         super().__init__(self)
@@ -12,7 +13,7 @@ class SchedulerException(Exception):
 class Scheduler(object):
     def __init__(self, config=None):
         if config is None:
-            raise SchedulerException('config invalid')
+            raise SchedulerException("config invalid")
 
     def run(self):
         # TODO

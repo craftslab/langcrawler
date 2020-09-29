@@ -7,14 +7,14 @@ def test_config():
     config = Config()
 
     try:
-        config.pg_host = ''
+        config.pg_host = ""
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.pg_host = '127.0.0.1'
+        config.pg_host = "127.0.0.1"
     except ConfigException as _:
         assert False
     else:
@@ -35,42 +35,42 @@ def test_config():
         assert True
 
     try:
-        config.pg_user = ''
+        config.pg_user = ""
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.pg_user = 'postgres'
+        config.pg_user = "postgres"
     except ConfigException as _:
         assert False
     else:
         assert True
 
     try:
-        config.pg_pass = ''
+        config.pg_pass = ""
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.pg_pass = 'postgres'
+        config.pg_pass = "postgres"
     except ConfigException as _:
         assert False
     else:
         assert True
 
     try:
-        config.redis_host = ''
+        config.redis_host = ""
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.redis_host = '127.0.0.1'
+        config.redis_host = "127.0.0.1"
     except ConfigException as _:
         assert False
     else:
@@ -91,14 +91,14 @@ def test_config():
         assert True
 
     try:
-        config.redis_pass = ''
+        config.redis_pass = ""
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.redis_pass = 'redis'
+        config.redis_pass = "redis"
     except ConfigException as _:
         assert False
     else:
@@ -126,7 +126,7 @@ def test_config():
         assert False
 
     try:
-        config.repo_hosts = ['gerrit']
+        config.repo_hosts = ["gerrit"]
     except ConfigException as _:
         assert False
     else:
@@ -140,7 +140,7 @@ def test_config():
         assert False
 
     try:
-        config.repo_langs = ['go']
+        config.repo_langs = ["go"]
     except ConfigException as _:
         assert False
     else:

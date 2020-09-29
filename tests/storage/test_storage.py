@@ -8,8 +8,8 @@ from langcrawler.storage.storage import Storage, StorageException
 
 
 def test_exception():
-    exception = StorageException('exception')
-    assert str(exception) == 'exception'
+    exception = StorageException("exception")
+    assert str(exception) == "exception"
 
 
 def test_storage():
@@ -17,34 +17,34 @@ def test_storage():
     storage = Storage(config)
 
     try:
-        storage._new_db('test')
+        storage._new_db("test")
     except StorageException as _:
         assert False
     else:
         assert True
 
     try:
-        storage._new_tbl('test', schemas)
+        storage._new_tbl("test", schemas)
     except StorageException as _:
         assert False
     else:
         assert True
 
     try:
-        storage._connect_db('test')
+        storage._connect_db("test")
     except StorageException as _:
         assert False
     else:
         assert True
 
     data = collections.OrderedDict()
-    data[Schema.HOST] = 'host'
-    data[Schema.REPO] = 'repo'
-    data[Schema.LANGUAGE] = 'language'
-    data[Schema.URL] = 'url'
-    data[Schema.CLONE] = 'clone'
-    data[Schema.COMMIT] = 'commit'
-    data[Schema.DATE] = 'date'
+    data[Schema.HOST] = "host"
+    data[Schema.REPO] = "repo"
+    data[Schema.LANGUAGE] = "language"
+    data[Schema.URL] = "url"
+    data[Schema.CLONE] = "clone"
+    data[Schema.COMMIT] = "commit"
+    data[Schema.DATE] = "date"
 
     try:
         storage._insert_data(data)

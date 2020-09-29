@@ -17,16 +17,16 @@ def main():
 
     try:
         config = Config()
-        config.pg_host = arg.pg_address.split(':')[0]
-        config.pg_port = arg.pg_address.split(':')[1]
-        config.pg_user = arg.pg_login.split('/')[0]
-        config.pg_pass = arg.pg_login.split('/')[1]
-        config.redis_host = arg.redis_address.split(':')[0]
-        config.redis_port = arg.redis_address.split(':')[1]
+        config.pg_host = arg.pg_address.split(":")[0]
+        config.pg_port = arg.pg_address.split(":")[1]
+        config.pg_user = arg.pg_login.split("/")[0]
+        config.pg_pass = arg.pg_login.split("/")[1]
+        config.redis_host = arg.redis_address.split(":")[0]
+        config.redis_port = arg.redis_address.split(":")[1]
         config.redis_pass = arg.redis_pass
         config.repo_count = arg.repo_count
-        config.repo_hosts = arg.repo_hosts.split(',')
-        config.repo_langs = arg.repo_langs.split(',')
+        config.repo_hosts = arg.repo_hosts.split(",")
+        config.repo_langs = arg.repo_langs.split(",")
     except ConfigException as e:
         Logger.error(str(e))
         return -1

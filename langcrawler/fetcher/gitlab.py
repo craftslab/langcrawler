@@ -13,13 +13,13 @@ class GitLabException(Exception):
 
 
 class GitLab(object):
-    _url = ''
+    _url = ""
 
     def __init__(self):
         try:
             self._request = Request(retry=1, timeout=None)
         except RequestException as e:
-            raise GitLabException('init failed %s' % str(e))
+            raise GitLabException("init failed %s" % str(e))
 
     def run(self, langs, count):
         # TODO

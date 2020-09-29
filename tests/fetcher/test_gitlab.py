@@ -4,8 +4,8 @@ from langcrawler.fetcher.gitlab import GitLab, GitLabException
 
 
 def test_exception():
-    exception = GitLabException('exception')
-    assert str(exception) == 'exception'
+    exception = GitLabException("exception")
+    assert str(exception) == "exception"
 
 
 def test_gitlab():
