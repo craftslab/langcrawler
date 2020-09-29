@@ -5,6 +5,7 @@ coveralls
 hypothesis
 flake8
 mypy
+pre-commit
 psycopg2
 pytest
 redis
