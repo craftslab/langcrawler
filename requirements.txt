@@ -1,6 +1,10 @@
+black
 colorama
 coverage
 coveralls
+hypothesis
+flake8
+mypy
 psycopg2
 pytest
 redis
