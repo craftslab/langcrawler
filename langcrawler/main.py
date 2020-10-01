@@ -25,8 +25,8 @@ def main():
         config.redis_port = arg.redis_address.split(":")[1]
         config.redis_pass = arg.redis_pass
         config.repo_count = arg.repo_count
-        config.repo_hosts = arg.repo_hosts.split(",")
-        config.repo_langs = arg.repo_langs.split(",")
+        config.repo_host = arg.repo_host.split(",")
+        config.repo_lang = arg.repo_lang.split(",")
     except ConfigException as e:
         Logger.error(str(e))
         return -1

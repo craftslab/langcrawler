@@ -22,7 +22,7 @@ class Gerrit(object):
         except RequestException as e:
             raise GerritException("init failed %s" % str(e))
 
-    def run(self, langs, count):
+    def run(self, lang, count):
         result = []
 
         try:

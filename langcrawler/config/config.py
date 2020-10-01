@@ -25,8 +25,8 @@ class Config(object):
         self._redis_pass = "redis"
 
         self._repo_count = 1
-        self._repo_hosts = []
-        self._repo_langs = []
+        self._repo_host = []
+        self._repo_lang = []
 
     @property
     def pg_host(self):
@@ -109,27 +109,27 @@ class Config(object):
         self._repo_count = count
 
     @property
-    def repo_hosts(self):
-        return self._repo_hosts
+    def repo_host(self):
+        return self._repo_host
 
-    @repo_hosts.setter
-    def repo_hosts(self, hosts):
-        if not isinstance(hosts, list) or len(hosts) == 0:
-            raise ConfigException("hosts invalid")
-        for item in hosts:
+    @repo_host.setter
+    def repo_host(self, host):
+        if not isinstance(host, list) or len(host) == 0:
+            raise ConfigException("host invalid")
+        for item in host:
             if item.strip() not in self.hosts:
                 raise ConfigException("host invalid: %s" % item)
-            self._repo_hosts.append(item)
+            self._repo_host.append(item)
 
     @property
-    def repo_langs(self):
-        return self._repo_langs
+    def repo_lang(self):
+        return self._repo_lang
 
-    @repo_langs.setter
-    def repo_langs(self, langs):
-        if not isinstance(langs, list) or len(langs) == 0:
-            raise ConfigException("langs invalid")
-        for item in langs:
+    @repo_lang.setter
+    def repo_lang(self, lang):
+        if not isinstance(lang, list) or len(lang) == 0:
+            raise ConfigException("lang invalid")
+        for item in lang:
             if item.strip() not in self.langs:
                 raise ConfigException("lang invalid: %s" % item)
-            self._repo_langs.append(item)
+            self._repo_lang.append(item)

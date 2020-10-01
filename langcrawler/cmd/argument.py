@@ -48,17 +48,17 @@ class Argument(object):
             type=int,
         )
         self._parser.add_argument(
-            "--repo-hosts",
+            "--repo-host",
             default="gerrit,github,gitlab",
-            dest="repo_hosts",
-            help="repository hosts",
+            dest="repo_host",
+            help="repository host",
             required=False,
         )
         self._parser.add_argument(
-            "--repo-langs",
+            "--repo-lang",
             default="go,javascript,php,python,rust,typescript",
-            dest="repo_langs",
-            help="repository languages",
+            dest="repo_lang",
+            help="repository language",
             required=False,
         )
         self._parser.add_argument("-v", "--version", action="version", version=VERSION)

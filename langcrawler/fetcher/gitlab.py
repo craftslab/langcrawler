@@ -21,7 +21,7 @@ class GitLab(object):
         except RequestException as e:
             raise GitLabException("init failed %s" % str(e))
 
-    def run(self, langs, count):
+    def run(self, lang, count):
         # TODO
         result = []
 

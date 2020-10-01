@@ -22,12 +22,12 @@ class GitHub(object):
         except RequestException as e:
             raise GitHubException("init failed %s" % str(e))
 
-    def run(self, langs, count):
+    def run(self, lang, count):
         result = []
 
-        for lang in langs:
+        for lan in lang:
             try:
-                buf = self._request.run(self._url % (lang, count))
+                buf = self._request.run(self._url % (lan, count))
             except RequestException as e:
                 raise GitHubException("run failed %s" % str(e))
             for item in buf["items"]:

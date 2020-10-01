@@ -14,8 +14,8 @@ def test_fetcher():
 
     try:
         config.repo_count = 1
-        config.repo_langs = ["go"]
-        config.repo_hosts = ["github"]
+        config.repo_lang = ["go"]
+        config.repo_host = ["github"]
     except ConfigException as _:
         assert False
     else:

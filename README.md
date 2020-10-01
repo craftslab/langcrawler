@@ -9,6 +9,8 @@
 
 *langcrawler* is a language crawler written in Python.
 
+See [Lang Fetcher](https://github.com/craftslab/langfetcher/) as a language fetcher from *langcrawler*.
+
 
 
 ## Requirement
@@ -55,8 +57,8 @@ langcrawler \
   --redis-address 127.0.0.1:6379 \
   --redis-pass redis \
   --repo-count 1 \
-  --repo-hosts gerrit,github,gitlab \
-  --repo-langs go,javascript,php,python,rust,typescript
+  --repo-host gerrit,github,gitlab \
+  --repo-lang go,javascript,php,python,rust,typescript
 ```
 
 
@@ -66,8 +68,8 @@ langcrawler \
 ```bash
 usage: crawler.py [-h] [--pg-address PG_ADDRESS] [--pg-login PG_LOGIN]
                   [--redis-address REDIS_ADDRESS] [--redis-pass REDIS_PASS]
-                  [--repo-count REPO_COUNT] [--repo-hosts REPO_HOSTS]
-                  [--repo-langs REPO_LANGS] [-v]
+                  [--repo-count REPO_COUNT] [--repo-host REPO_HOST]
+                  [--repo-lang REPO_LANG] [-v]
 
 Language Crawler
 
@@ -82,12 +84,18 @@ optional arguments:
                         redis pass
   --repo-count REPO_COUNT
                         repository count
-  --repo-hosts REPO_HOSTS
-                        repository hosts
-  --repo-langs REPO_LANGS
-                        repository languages
+  --repo-host REPO_HOST
+                        repository host
+  --repo-lang REPO_LANG
+                        repository language
   -v, --version         show program's version number and exit
 ```
+
+
+
+## Design
+
+![design](design.png)
 
 
 

@@ -119,28 +119,28 @@ def test_config():
         assert True
 
     try:
-        config.repo_hosts = []
+        config.repo_host = []
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.repo_hosts = ["gerrit"]
+        config.repo_host = ["gerrit"]
     except ConfigException as _:
         assert False
     else:
         assert True
 
     try:
-        config.repo_langs = []
+        config.repo_lang = []
     except ConfigException as _:
         assert True
     else:
         assert False
 
     try:
-        config.repo_langs = ["go"]
+        config.repo_lang = ["go"]
     except ConfigException as _:
         assert False
     else:
