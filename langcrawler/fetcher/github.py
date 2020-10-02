@@ -20,7 +20,7 @@ class GitHub(object):
         try:
             self._request = Request(retry=1, timeout=None)
         except RequestException as e:
-            raise GitHubException("init failed %s" % str(e))
+            raise GitHubException("failed to init: %s" % str(e))
 
     def run(self, lang, count):
         result = []
@@ -29,7 +29,7 @@ class GitHub(object):
             try:
                 buf = self._request.run(self._url % (lan, count))
             except RequestException as e:
-                raise GitHubException("run failed %s" % str(e))
+                raise GitHubException("failed to run: %s" % str(e))
             for item in buf["items"]:
                 result.append(self._build(item))
 
@@ -52,6 +52,6 @@ class GitHub(object):
         try:
             buf = self._request.run(url)
         except RequestException as e:
-            raise GitHubException("commit failed %s" % str(e))
+            raise GitHubException("failed to request: %s" % str(e))
 
         return buf[0]

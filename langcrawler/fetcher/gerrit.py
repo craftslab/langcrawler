@@ -20,7 +20,7 @@ class Gerrit(object):
         try:
             self._request = Request(retry=1, timeout=None)
         except RequestException as e:
-            raise GerritException("init failed %s" % str(e))
+            raise GerritException("failed to init: %s" % str(e))
 
     def run(self, lang, count):
         result = []
@@ -30,7 +30,7 @@ class Gerrit(object):
             for key, val in buf.items():
                 result.append(self._build(key, val))
         except RequestException as e:
-            raise GerritException("run failed %s" % str(e))
+            raise GerritException("failed to run: %s" % str(e))
 
         return result
 
@@ -51,7 +51,7 @@ class Gerrit(object):
         try:
             buf = self._request.run(self._url + repo + "/branches")
         except RequestException as e:
-            raise GerritException("branch failed %s" % str(e))
+            raise GerritException("failed to request: %s" % str(e))
 
         revision = ""
 
@@ -64,6 +64,6 @@ class Gerrit(object):
         try:
             buf = self._request.run(self._url + repo + "/commits/" + revision)
         except RequestException as e:
-            raise GerritException("commit failed %s" % str(e))
+            raise GerritException("failed to request: %s" % str(e))
 
         return revision, buf["committer"]["date"]

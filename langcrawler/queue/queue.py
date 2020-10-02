@@ -22,8 +22,12 @@ class Queue(object):
 
     def connect(self, db=0):
         try:
-            self._redis = redis.Redis(host=self._config.redis_host, port=self._config.redis_port, db=db,
-                                      password=self._config.redis_pass)
+            self._redis = redis.Redis(
+                host=self._config.redis_host,
+                port=self._config.redis_port,
+                db=db,
+                password=self._config.redis_pass,
+            )
         except redis.exceptions.ResponseError as e:
             raise QueueException("failed to connect: %s" % str(e))
 
@@ -35,7 +39,7 @@ class Queue(object):
                 raise QueueException("failed to kill: %s" % str(e))
 
         for item in self._redis.client_list():
-            helper(item['addr'])
+            helper(item["addr"])
 
     def delete(self, name):
         try:

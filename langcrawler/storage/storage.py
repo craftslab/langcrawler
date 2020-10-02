@@ -30,25 +30,20 @@ class Storage(object):
                 self._new_db(item)
                 self._new_tbl(item, schemas)
             except StorageException as e:
-                raise StorageException("init invalid %s" % str(e))
-
-    def run(self, data):
-        self._connect_db(data[Schema.LANGUAGE])
-        self._insert_data(data)
-        self._close_db()
+                raise StorageException("failed to init: %s" % str(e))
 
     def _new_db(self, name):
-        self._connect_db()
+        self.connect()
 
         try:
             self._cur.execute("create database %s;" % name)
         except psycopg2.errors.DuplicateDatabase:
             pass
 
-        self._close_db()
+        self.disconnect()
 
     def _new_tbl(self, dbname, tblnames):
-        self._connect_db(dbname)
+        self.connect(dbname)
 
         try:
             buf = " text,".join(tblnames)
@@ -63,9 +58,9 @@ class Storage(object):
         except psycopg2.errors.DuplicateTable:
             pass
 
-        self._close_db()
+        self.disconnect()
 
-    def _connect_db(self, name=None):
+    def connect(self, name=None):
         if name is not None:
             self._conn = psycopg2.connect(
                 host=self._config.pg_host,
@@ -85,7 +80,11 @@ class Storage(object):
         self._conn.autocommit = True
         self._cur = self._conn.cursor()
 
-    def _insert_data(self, data):
+    def disconnect(self):
+        self._cur.close()
+        self._conn.close()
+
+    def set(self, data):
         self._cur.execute(
             "insert into %s(%s) values('%s') on conflict(%s) do update set %s='%s';"
             % (
@@ -109,7 +108,3 @@ class Storage(object):
                 data[Schema.DATE],
             )
         )
-
-    def _close_db(self):
-        self._cur.close()
-        self._conn.close()

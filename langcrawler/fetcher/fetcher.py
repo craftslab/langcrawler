@@ -29,4 +29,4 @@ class Fetcher(object):
                 provider = self._providers[item]()
                 provider.run(self._config.repo_lang, self._config.repo_count)
             except Exception as e:
-                raise FetcherException("run failed %s" % str(e))
+                raise FetcherException("failed to run: %s" % str(e))

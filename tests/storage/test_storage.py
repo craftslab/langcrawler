@@ -31,7 +31,7 @@ def test_storage():
         assert True
 
     try:
-        storage._connect_db("test")
+        storage.connect("test")
     except StorageException as _:
         assert False
     else:
@@ -47,14 +47,14 @@ def test_storage():
     data[Schema.DATE] = "date"
 
     try:
-        storage._insert_data(data)
+        storage.set(data)
     except StorageException as _:
         assert False
     else:
         assert True
 
     try:
-        storage._close_db()
+        storage.disconnect()
     except StorageException as _:
         assert False
     else:

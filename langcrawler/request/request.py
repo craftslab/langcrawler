@@ -34,6 +34,6 @@ class Request(object):
         session.close()
 
         if response.status_code != requests.codes.ok:
-            raise RequestException("run failed: %s" % url)
+            raise RequestException("failed to run: %s" % url)
 
         return json.loads(response.text.replace(")]}'", ""))
