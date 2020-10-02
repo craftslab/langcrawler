@@ -21,7 +21,12 @@ def test_fetcher():
     else:
         assert True
 
-    fetcher = Fetcher(config)
+    try:
+        fetcher = Fetcher(config)
+    except FetcherException as _:
+        assert False
+    else:
+        assert True
 
     try:
         fetcher.run()

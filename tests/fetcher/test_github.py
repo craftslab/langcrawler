@@ -22,14 +22,20 @@ def test_exception():
 
 
 def test_github():
-    github = GitHub()
-
     data = load_data(
         os.path.join(
             os.path.dirname(os.path.abspath(__file__)), "../data", "go-github.json"
         )
     )
+
     data = data["items"][0]
+
+    try:
+        github = GitHub()
+    except GitHubException as _:
+        assert False
+    else:
+        assert True
 
     try:
         _ = github._build(data)

@@ -9,8 +9,6 @@ def test_exception():
 
 
 def test_gerrit():
-    gerrit = Gerrit()
-
     data = {
         "id": "plugins%2Fcode-owners",
         "state": "ACTIVE",
@@ -22,6 +20,13 @@ def test_gerrit():
             }
         ],
     }
+
+    try:
+        gerrit = Gerrit()
+    except GerritException as _:
+        assert False
+    else:
+        assert True
 
     try:
         _ = gerrit._build("plugins/code-owners", data)

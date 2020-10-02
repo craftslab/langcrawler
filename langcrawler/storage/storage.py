@@ -25,7 +25,7 @@ class Storage(object):
         self._conn = None
         self._cur = None
 
-        for item in self._config.lang:
+        for item in self._config.langs:
             try:
                 self._new_db(item)
                 self._new_tbl(item, schemas)

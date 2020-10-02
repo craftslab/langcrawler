@@ -14,7 +14,17 @@ def test_exception():
 
 def test_storage():
     config = Config()
-    storage = Storage(config)
+    config.pg_host = "127.0.0.1"
+    config.pg_port = 5432
+    config.pg_user = "postgres"
+    config.pg_pass = "postgres"
+
+    try:
+        storage = Storage(config)
+    except StorageException as _:
+        assert False
+    else:
+        assert True
 
     try:
         storage._new_db("test")
