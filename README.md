@@ -1,6 +1,6 @@
 # langcrawler
 
-[![Actions Status](https://github.com/actions/runner/workflows/Runner%20CI/badge.svg)](https://github.com/craftslab/langcrawler/actions)
+[![Actions Status](https://github.com/craftslab/langcrawler/workflows/CI/badge.svg?branch=master&event=push)](https://github.com/craftslab/langcrawler/actions?query=workflow%3ACI)
 [![PyPI](https://img.shields.io/pypi/v/langcrawler.svg?color=brightgreen)](https://pypi.org/project/langcrawler/)
 [![License](https://img.shields.io/github/license/craftslab/langcrawler.svg?color=brightgreen)](https://github.com/craftslab/langcrawler/blob/master/LICENSE)
 
