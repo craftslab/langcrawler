@@ -8,7 +8,7 @@
 
 *langcrawler* is a language crawler written in Python.
 
-See [Lang Fetcher](https://github.com/craftslab/langfetcher/) as a language fetcher from *langcrawler*.
+See *[Lang Fetcher](https://github.com/craftslab/langfetcher/)* as a language fetcher from *langcrawler*.
 
 
 
