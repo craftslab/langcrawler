@@ -94,7 +94,7 @@ optional arguments:
 
 ## Design
 
-![design](design.png)
+![design](design.svg)
 
 
 
