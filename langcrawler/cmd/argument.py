@@ -2,7 +2,7 @@
 
 import argparse
 
-from .version import VERSION
+from ..__version__ import __version__
 
 
 class Argument(object):
@@ -61,7 +61,9 @@ class Argument(object):
             help="repository language",
             required=False,
         )
-        self._parser.add_argument("-v", "--version", action="version", version=VERSION)
+        self._parser.add_argument(
+            "-v", "--version", action="version", version=__version__
+        )
 
     def parse(self, argv):
         return self._parser.parse_args(argv[1:])

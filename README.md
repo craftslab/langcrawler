@@ -99,14 +99,14 @@ optional arguments:
 
 
 
-## License
-
-Project License can be found [here](https://github.com/craftslab/langcrawler/blob/master/LICENSE).
-
-
-
 ## Reference
 
 - [Search on Gerrit](https://gerrit-documentation.storage.googleapis.com/Documentation/3.2.3/rest-api.html)
 - [Search on GitHub](https://developer.github.com/v3/search/)
 - [Search on GitLab](https://docs.gitlab.com/ee/api/api_resources.html)
+
+
+
+## License
+
+Project License can be found [here](https://github.com/craftslab/langcrawler/blob/master/LICENSE).
