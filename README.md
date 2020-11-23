@@ -16,18 +16,16 @@ See *[Lang Fetcher](https://github.com/craftslab/langfetcher/)* as a language fe
 ## Requirement
 
 - PostgreSQL >= 12.4
-- Python >= 3.8
+- Python >= 3.7
 - Redis >= 6.0
 
 
 
-## Installation
+## Install
 
 ### Ubuntu
 
 ```bash
-apt update
-apt install -y python3-dev python3-pip python3-setuptools
 pip install langcrawler
 ```
 
@@ -40,7 +38,7 @@ pip install langcrawler
 
 
 
-## Updating
+## Update
 
 ```bash
 pip install langcrawler --upgrade
@@ -48,7 +46,7 @@ pip install langcrawler --upgrade
 
 
 
-## Running
+## Run
 
 ```bash
 langcrawler \
